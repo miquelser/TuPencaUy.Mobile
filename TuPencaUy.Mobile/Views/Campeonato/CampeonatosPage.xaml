@@ -1,0 +1,23 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TuPencaUy.Mobile.Views.Campeonato.CampeonatosPage"
+             xmlns:vm="clr-namespace:TuPencaUy.Mobile.ViewModels"
+             Title="Campeonatos">
+    <ContentPage.BindingContext>
+        <vm:CampeonatoViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <CollectionView ItemsSource="{Binding Campeonatos}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="{Binding Nombre}" FontSize="Medium"/>
+                        <Button Text="Ver Partidos" Command="{Binding Path=BindingContext.SeleccionarCampeonatoCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" CommandParameter="{Binding .}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
+

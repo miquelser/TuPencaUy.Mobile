@@ -1,0 +1,28 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TuPencaUy.Mobile.Views.PartidoDetalle.PartidoDetallePage"
+             xmlns:vm="clr-namespace:TuPencaUy.Mobile.ViewModels"
+             Title="Detalle del Partido">
+    <ContentPage.BindingContext>
+        <vm:PartidoDetalleViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10">
+        <Label Text="Equipo Local" FontSize="Medium" />
+        <Label Text="{Binding Partido.EquipoLocal}" FontSize="Large" />
+
+        <Label Text="Equipo Visitante" FontSize="Medium" />
+        <Label Text="{Binding Partido.EquipoVisitante}" FontSize="Large" />
+
+        <Label Text="Estado del Partido" FontSize="Medium" />
+        <Picker ItemsSource="{Binding Estados}" SelectedItem="{Binding Partido.Estado}" />
+
+        <!-- ComboBox para seleccionar resultado -->
+        <Label Text="Selecciona el resultado del partido" FontSize="Medium" />
+        <ComboBox ItemsSource="{Binding Resultados}" SelectedItem="{Binding ResultadoSeleccionado}" />
+
+        <Button Text="Guardar Pronóstico" Command="{Binding GuardarPronosticoCommand}" CommandParameter="{Binding Partido}" />
+
+        <Button Text="Volver a Partidos" Command="{Binding VolverCommand}" />
+    </StackLayout>
+</ContentPage>

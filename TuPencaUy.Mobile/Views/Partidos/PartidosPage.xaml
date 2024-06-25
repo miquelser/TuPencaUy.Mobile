@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="TuPencaUy.Mobile.Views.Partidos.PartidosPage"
+            xmlns:vm="clr-namespace:TuPencaUy.Mobile.ViewModels"
+            Title="Partidos">
+<ContentPage.BindingContext>
+    <vm:PartidosViewModel />
+</ContentPage.BindingContext>
+
+<StackLayout>
+    <CollectionView ItemsSource="{Binding Partidos}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout Orientation="Vertical" Padding="10">
+                    <Label Text="{Binding EquipoLocal}" FontSize="Medium"/>
+                    <Label Text="vs" FontSize="Medium"/>
+                    <Label Text="{Binding EquipoVisitante}" FontSize="Medium"/>
+                    <Button Text="Ver Detalle" Command="{Binding Path=BindingContext.SeleccionarPartidoCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" CommandParameter="{Binding .}" />
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</StackLayout>
+</ContentPage>
